@@ -1,0 +1,13 @@
+.env
+.cache
+*.pyc
+*.mp3
+*.webm
+*.wav
+*.flac
+*.m4a
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.mkv
