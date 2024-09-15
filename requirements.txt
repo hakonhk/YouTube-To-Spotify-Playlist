@@ -1,0 +1,6 @@
+spotipy
+shazamio
+pydub
+tqdm
+yt-dlp
+python-dotenv
