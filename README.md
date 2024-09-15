@@ -1,4 +1,4 @@
-# Spotify Playlist Generator from YouTube DJ Sets (or just YouTube videos)
+# Spotify Playlist Tracklist Generator from YouTube DJ Sets (or just YouTube videos)
 
 This project allows you to generate a Spotify playlist from a YouTube DJ set. It splits the audio into segments, and leverages the Shazam API to identify songs in the DJ set and the Spotify API to create a playlist with the identified tracks.
 Its not flawless and often halluciantes, especially when DJs mix songs heavily or play unreleased music.
