@@ -3,9 +3,6 @@ from ShazamAnalyzer import ShazamAnalyzer
 from youtubeDownloader import youtubeDownloader
 import asyncio
 import sys
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 async def shazamAnalyze(file_path):
     # Analyze the audio file using Shazam
@@ -13,21 +10,16 @@ async def shazamAnalyze(file_path):
     results = await analyzer.run_analysis()
     return results
 
-def playlistGen(shazam_results_file, playlistName):
+def playlistGen(shazam_results_file, playlistName): 
     # Generate a Spotify playlist from Shazam results
-    SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID') # TODO: Add your Spotify client ID
-    SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET') # TODO: Add your Spotify client secret
-    SPOTIPY_REDIRECT_URI = 'http://localhost:3000'
-    SCOPE = 'playlist-modify-private'
-
-    generator = SpotifyPlaylistGenerator(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SCOPE)
-    track_uris = generator.process_shazam_results(shazam_results_file)
-    playlist_url = generator.create_spotify_playlist(track_uris, playlistName)
+    generator = SpotifyPlaylistGenerator(shazam_results_file, playlistName) #TODO: Further encapsulation?
+    track_uris = generator.process_shazam_results()
+    playlist_url = generator.create_spotify_playlist(track_uris)
     print(f"Playlist created: {playlist_url}")
     
     print("\nPlaylist order:")
     for timestamp, uri in track_uris:
-        track_info = generator.sp.track(uri)
+        track_info = generator.spotify_api.track(uri)
         print(f"{timestamp} seconds: {track_info['name']} by {track_info['artists'][0]['name']}")
 
 async def main(youtube_link):
