@@ -18,8 +18,8 @@ Its not flawless and often halluciantes, especially when DJs mix songs heavily o
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/spotify-playlist-generator.git
-    cd spotify-playlist-generator
+    git clone https://github.com/hakonhk/YouTube-To-Spotify-Playlist.git
+    cd YouTube-To-Spotify-Playlist
     ```
 
 2. Install the required Python packages:
