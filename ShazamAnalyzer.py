@@ -7,10 +7,10 @@ import time
 from tqdm import tqdm
 
 class ShazamAnalyzer:
-    def __init__(self, file_path, segment_length=601000, interval=301000):
+    def __init__(self, file_path, segment_length=45*1000, interval=30*1000): #fixed typo
         # Initialize with file path and analysis parameters
-        # segment_length: length of audio segment to analyze (default: 15 minutes)
-        # interval: time between start of each segment (default: 1 minute)
+        # segment_length: length of audio segment to analyze (default: 1 minute)
+        # interval: time between start of each segment (default: 30 sec)
         self.file_path = file_path
         self.segment_length = segment_length
         self.interval = interval
