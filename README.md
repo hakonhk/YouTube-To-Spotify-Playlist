@@ -11,12 +11,15 @@ Its not flawless and often halluciantes, especially when DJs mix songs heavily o
 - **Generate Playlist**: Creates a Spotify playlist with the identified tracks.
 
 
-## Limitations: These categories are often mis-recognized / creates hallucinations
+## Practical Limitations: These categories are often mis-recognized / creates hallucinations
 - **Live Performance**
 - **Heavily mixed/altered songs:** DJs often use filters, FX, Pitch Modulation, Tempo stretch, transitions, etc.
 - **Quickly changing tracks:** DJs often quickly swap between different tracks (ex. on the drop)
 - **Unreleased music** (random similar song will often be added)
 - **Other hallucinations:** Shazam ain't perfect and it will get some songs wrong. Limitations here will be like the limitations of Shazam. *if Shazam can't find it, this can't either.*
+
+## Technical Limitations
+- **Very unoptimized in this state**
 
 ## Installation
 
