@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube DJ Set Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #18191a;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #242526;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #3a3b3c;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #fff;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none; /* Hidden initially */
+            color: #333;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube DJ Set Analyzer</h1>
+        <p>Enter a YouTube link to a DJ set or concert, and we'll analyze it to create a Spotify playlist!</p>
+        <input type="text" id="youtube-link" placeholder="Enter YouTube URL">
+        <button onclick="analyzeSet()">Analyze and make playlist</button>
+        <div id="result"></div>
+        <p><a href="/how-it-works">How It Works / Limitations</a></p>
+        <p><a href="/made-by">Feedback and contact</a></p>
+    </div>
+
+    <script>
+        function analyzeSet() {
+            var link = document.getElementById('youtube-link').value;
+            var result = document.getElementById('result');
+            result.style.display = 'block'; // Show the result div
+            result.innerHTML = "Analyzing... This may take a while (1-2 min) depending on the length of the set.";
+
+            fetch('/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ link: link }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                result.innerHTML = data.message;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                result.innerHTML = `An error occurred: ${error.message}. Please try again.`;
+            });
+        }
+    </script>
+</body>
+</html>
