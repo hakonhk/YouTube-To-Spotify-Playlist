@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - YouTube DJ Set Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #18191a;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #242526;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #3a3b3c;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        h1, h2 {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How It Works</h1>
+        <h2>From a YouTube Video to a Spotify Playlist</h2>
+        <p>This project allows you to generate a Spotify playlist from a YouTube DJ set. It splits the audio into segments, and leverages the Shazam API to identify songs in the DJ set and the Spotify API to create a playlist with the identified tracks. It's not flawless and often hallucinates, especially when DJs mix songs heavily or play unreleased music.</p>
+        
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Download Audio:</strong> Downloads audio from a YouTube video.</li>
+            <li><strong>Analyze Audio:</strong> Splits the audio into segments and uses Shazam to identify tracks.</li>
+            <li><strong>Generate Playlist:</strong> Creates a Spotify playlist with the identified tracks.</li>
+        </ul>
+        
+        <h2>Practical Limitations</h2>
+        <p>These categories are often mis-recognized / create hallucinations:</p>
+        <ul>
+            <li><strong>Live Performance:</strong> Heavily mixed/altered songs: DJs often use filters, FX, Pitch Modulation, Tempo stretch, transitions, etc.</li>
+            <li><strong>Quickly changing tracks:</strong> DJs often quickly swap between different tracks (e.g., on the drop).</li>
+            <li><strong>Unreleased music:</strong> Random similar song will often be added.</li>
+            <li><strong>Other hallucinations:</strong> Shazam isn't perfect and it will get some songs wrong. Limitations here will be like the limitations of Shazam. If Shazam can't find it, this can't either.</li>
+        </ul>
+        
+        <p><a href="/">Back to Main Page</a></p>
+    </div>
+</body>
+</html>
