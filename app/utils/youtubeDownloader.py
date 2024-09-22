@@ -3,7 +3,7 @@ import os
 import logging
 
 class youtubeDownloader:
-    def __init__(self, download_dir='audio_files'):
+    def __init__(self, download_dir='C:\\Users\\hakon\\Downloads\\New folder'):
         self.download_dir = download_dir
         if not os.path.exists(self.download_dir):
             os.makedirs(self.download_dir)

@@ -1,0 +1,183 @@
+/* styles.css */
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background: url('/static/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes full height */
+}
+
+header, footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+header h1, footer p {
+    margin: 0;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background: #242526;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #3a3b3c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the start (left) */
+    text-align: left; /* Left align text */
+    margin-bottom: 20px; /* Add margin to separate containers */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    gap: 10px; /* Space between input and button */
+}
+
+h1, h2 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #e0e0e0; /* Light grey color for better readability */
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="text"] {
+    flex: 1; /* Take up remaining space */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Align with input */
+}
+
+button:hover:enabled {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none; /* Hidden initially */
+    color: #333;
+}
+
+p.back-link {
+    text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    input[type="text"], button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 80px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    input[type="text"], button {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+}

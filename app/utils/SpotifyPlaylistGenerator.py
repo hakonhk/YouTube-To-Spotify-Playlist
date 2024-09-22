@@ -42,7 +42,7 @@ class SpotifyPlaylistGenerator:
     def create_spotify_playlist(self, track_uris):
         # Create a new Spotify playlist and add tracks to it
         user_id = self.spotify_api.current_user()['id']
-        playlist = self.spotify_api.user_playlist_create(user_id, self.playlistName, public=False)
+        playlist = self.spotify_api.user_playlist_create(user_id, self.playlistName, public=False,collaborative=False, description="")
         track_uris_only = [uri for _, uri in track_uris]
         self.spotify_api.playlist_add_items(playlist['id'], track_uris_only)
         return playlist['external_urls']['spotify']
