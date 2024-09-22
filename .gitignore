@@ -12,3 +12,35 @@
 *.wmv
 *.mkv
 *.txt
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+*.swo
+*.DS_Store
+
+# Temporary directories
+temp/
+tmp/
+*.temp/
+*.tmp/
+
+# Configuration files
+config.py
+
+
+app/static/images/

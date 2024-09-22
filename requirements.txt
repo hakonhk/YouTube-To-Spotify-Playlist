@@ -5,3 +5,7 @@ pydub
 tqdm
 yt-dlp
 python-dotenv
+rich  
+aiofiles
+psutil
+pytest
