@@ -2,7 +2,7 @@
 ## Generate Tracklists from DJ sets/mixes
 
 This project allows you to generate a Spotify playlist from a YouTube DJ set. It splits the audio into segments, and leverages the Shazam API to identify songs in the DJ set and the Spotify API to create a playlist with the identified tracks.
-Its not flawless and often halluciantes, especially when DJs mix songs heavily or play unreleased music.
+It's not flawless and often hallucinates, especially when DJs mix songs heavily or play unreleased music.
 
 ## Features
 
@@ -10,13 +10,12 @@ Its not flawless and often halluciantes, especially when DJs mix songs heavily o
 - **Analyze Audio**: Splits the audio into segments and uses Shazam to identify tracks.
 - **Generate Playlist**: Creates a Spotify playlist with the identified tracks.
 
-
-## Practical Limitations: These categories are often mis-recognized / creates hallucinations
+## Practical Limitations: These categories are often mis-recognized / create hallucinations
 - **Live Performance**
 - **Heavily mixed/altered songs:** DJs often use filters, FX, Pitch Modulation, Tempo stretch, transitions, etc.
 - **Quickly changing tracks:** DJs often quickly swap between different tracks (ex. on the drop)
 - **Unreleased music** (random similar song will often be added)
-- **Other hallucinations:** Shazam ain't perfect and it will get some songs wrong. Limitations here will be like the limitations of Shazam. *if Shazam can't find it, this can't either.*
+- **Other hallucinations:** Shazam isn't perfect and it will get some songs wrong. Limitations here will be like the limitations of Shazam. *If Shazam can't find it, this can't either.*
 
 ## Technical Limitations
 - **Very unoptimized in this state**
@@ -42,18 +41,20 @@ Its not flawless and often halluciantes, especially when DJs mix songs heavily o
 
 ## Usage
 
-1. Run the script with a YouTube URL:
+1. Run the Flask app:
     ```sh
-    python main.py "https://www.youtube.com/watch?v=your_video_id"
+    python run.py
     ```
 
-2. The script will:
+2. Open your browser and go to `http://localhost:5000`.
+
+3. Enter the YouTube URL of the DJ set and click "Analyze and make playlist".
+
+4. The app will:
     - Download the audio from the YouTube video.
-    - Segment the audio into processable sizes
+    - Segment the audio into processable sizes.
     - Analyze the audio to identify tracks using Shazam.
     - Create a Spotify playlist with the identified tracks.
-
-
 
 ## Contributing
 
