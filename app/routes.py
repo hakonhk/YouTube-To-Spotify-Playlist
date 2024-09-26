@@ -6,7 +6,6 @@ from .utils.youtubeDownloader import youtubeDownloader
 import asyncio
 from tqdm import tqdm
 from app import socketio  # Import socketio from app
-import os
 
 main = Blueprint('main', __name__)
 
@@ -30,27 +29,26 @@ def analyze():
     
     return jsonify({"message": result, "estimated_time": estimated_time})
 
-async def shazam_analyze(file_path):
+async def shazam_analyze(audio_data):
     def progress_callback(progress, estimated_time, segment_processing_time):
         socketio.emit('progress_update', {'progress': progress, 'estimated_time': estimated_time, 'segment_processing_time': segment_processing_time})
 
-    analyzer = ShazamAnalyzer(file_path, progress_callback=progress_callback)
-    results, estimated_time = await analyzer.run_analysis()
-    return results, estimated_time
+    analyzer = ShazamAnalyzer(audio_data, progress_callback=progress_callback)
+    results = await analyzer.run_analysis()
+    return results
 
-def playlist_gen(shazam_results_file, playlist_name): 
-    generator = SpotifyPlaylistGenerator(shazam_results_file, playlist_name)
+def playlist_gen(shazam_results, playlist_name): 
+    generator = SpotifyPlaylistGenerator(shazam_results, playlist_name)
     track_uris = generator.process_shazam_results()
     playlist_url = generator.create_spotify_playlist(track_uris)
     return f"Playlist created: {playlist_url}"
 
 async def main_analysis(youtube_link):
     yt_dl = youtubeDownloader()
-    file_name = yt_dl.download_audio(youtube_link)
+    audio_data, video_title = yt_dl.download_audio(youtube_link)
     
-    # Debugging: Check if the file was downloaded correctly
-    if not os.path.exists(file_name):
-        raise FileNotFoundError(f"Downloaded file not found: {file_name}")
+    if audio_data is None:
+        raise FileNotFoundError("Downloaded audio data not found")
     
     # Initialize progress bar
     with tqdm(total=100, desc="Overall Progress") as pbar:
@@ -58,14 +56,14 @@ async def main_analysis(youtube_link):
         pbar.update(10)
         
         # Shazam analysis
-        shazam_results, estimated_time = await shazam_analyze(file_name)
+        shazam_results = await shazam_analyze(audio_data)
         pbar.update(70)
         
         # Playlist generation
-        result = playlist_gen(shazam_results, file_name.replace(file_name, '').replace('.mp3', ''))
+        result = playlist_gen(shazam_results, video_title)
         pbar.update(20)
     
-    return result, estimated_time
+    return result, "Estimated time not available"
 
 @socketio.on('connect')
 def handle_connect():
