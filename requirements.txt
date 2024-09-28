@@ -10,3 +10,5 @@ aiofiles
 psutil
 pytest
 flask-socketio
+ffmpeg
+pytube
