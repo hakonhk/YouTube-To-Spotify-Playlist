@@ -1,0 +1,29 @@
+{
+  "name": "youtube-to-spotify",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd ../backend && venv\\Scripts\\python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload",
+    "dev:frontend": "next dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.13"
+  },
+  "devDependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "concurrently": "^8.0.1",
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.13"
+  }
+}

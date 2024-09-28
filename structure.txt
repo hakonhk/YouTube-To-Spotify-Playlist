@@ -1,0 +1,42 @@
+my project Set2Playlist is a web application that allows users to convert DJ sets and concerts from Youtube videoes into Spotify playlists. It focuses on simplifying the process of extracting individual tracks from long DJ mixes and organizing them into a playlist that users can stream on Spotify. You aim to provide a user-friendly beautiful interface with beautiful animations. im using python and html now but i would like to move over next.js for a beautiful and trustworthy look.
+Right now im in the middle of moving from python and flask to python and next.js (in my understanding). ive been building only with AI, so i dont have a clue what goes on in frontend. i know the main concept behind the backend, but the code could all be wrong for what i know. i think i have a bunch of files that doesn't need to be there, and i also think the code needs to be checked for errors thouroughly, as well as be readable, efficient, safe and user-friendly.
+
+prompt me if you need more files to be able to understand.
+structure is like this:
+DJSet2Spotifyplaylist has 2 folders: backend, frontend.
+frontend has a bunch of files:
+frontend/.next (folder with bunch of stuff)
+frontend/node_modules (folder with bunch of stuff)
+frontend/pages/callback.tsx
+frontend/pages/index.tsx
+frontend/src/app/fonts/GeistMonoVF.woff
+frontend/src/app/fonts/GeistVF.woff
+frontend/src/app/globals.css
+frontend/src/app/layout.tsx
+frontend/src/app/page.tsx
+frontend/styles/Home.modules.css
+frontend/.eslintrc.json
+frontend/package.json
+frontend/package-lock.json
+frontend/tsconfig.json
+frontend/next.config.mjs
+frontend/postcss.config.mjs
+frontend/next-env.d.ts
+frontend/tailwind.config.ts
+
+backend files:
+backend/app/static/css/styles.css (maybe depricated from last build idk)
+backend/app/static/images (maybe depricated from last build idk)
+backend/app/templates/about.html
+backend/app/templates/index.html
+backend/app/utils/AudioProcessor.py
+backend/app/utils/ShazamAnalyzer.py (maybe depricated from last build idk)
+backend/app/utils/SpotifyPlaylistGenerator.py
+backend/app/__init__.py (maybe depricated from last build idk)
+backend/app/routes.py (maybe depricated from last build idk)
+backend/venv
+backend/.env
+backend/config.py
+backend/main.py
+backend/run.py
+spotify_auth.py

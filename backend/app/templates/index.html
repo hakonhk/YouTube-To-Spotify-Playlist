@@ -26,7 +26,6 @@
         </div>
         <div id="result"></div>
         <div id="progress-container" style="display: none;">
-            <p>Estimated analysis time: <span id="estimated-time"></span></p>
             <p>Progress: <span id="progress"></span>%</p>
         </div>
         <section id="introduction">
@@ -61,7 +60,6 @@
 
         socket.on('progress_update', function(data) {
             document.getElementById('progress-container').style.display = 'block';
-            document.getElementById('estimated-time').innerText = data.estimated_time;
             document.getElementById('progress').innerText = data.progress.toFixed(2);
         });
 
@@ -70,10 +68,9 @@
             var result = document.getElementById('result');
             var button = document.getElementById('analyze-button');
             
-            // Disable the button and show loading message
             button.disabled = true;
             result.style.display = 'block';
-            result.innerHTML = "🔄 Analyzing... This may take a while (1-2 min) depending on the length of the set.";
+            result.innerHTML = "🔄 Analyzing... This may take a while.";
 
             fetch('/analyze', {
                 method: 'POST',
@@ -82,20 +79,15 @@
                 },
                 body: JSON.stringify({ link: link }),
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                result.innerHTML = `Estimated analysis time: ${data.estimated_time}<br>${data.message}`;
-                button.disabled = false; // Re-enable the button
+                result.innerHTML = data.message;
+                button.disabled = false;
             })
             .catch((error) => {
                 console.error('Error:', error);
-                result.innerHTML = `❌ An error occurred: ${error.message}. Please try again.`;
-                button.disabled = false; // Re-enable the button
+                result.innerHTML = `❌ An error occurred. Please try again.`;
+                button.disabled = false;
             });
         }
     </script>
